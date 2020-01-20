@@ -48,9 +48,11 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Encuestas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url("index.php/tusencuestas")?>">Nueva Encuesta</a></li>
-                      <li><a href="form_advanced.html">Crear Encuesta</a></li>
+
+                      <li><a href="<?php echo base_url("index.php/tusencuestas")?>">Contestar Encuesta</a></li>
+                      <li><a href="<?php echo base_url("index.php/nuevaencuesta")?>">Crear Encuesta</a></li>
                       <li><a href="<?php echo base_url("index.php/Informes")?>">Informe de Encuestas</a></li>                      
+
                     </ul>
                   </li>
                  <!-- <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>

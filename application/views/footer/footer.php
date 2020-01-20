@@ -10,7 +10,7 @@
 <!-- footer content -->
         <footer>
           <div class="pull-right">
-            DISAGRO - Versión Demo <?php echo date("Y");?>
+            DELMOR S.A - SysEncuesta <?php echo date("Y");?>
           </div>
           <div class="clearfix"></div>
         </footer>

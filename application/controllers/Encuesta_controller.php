@@ -32,7 +32,7 @@ class Encuesta_controller extends CI_Controller {
 
 	public function resolverencuesta($idencuesta)
     {
-        $data;
+        
         $data["encabezado"] = $this->encuesta_model->getEncuestaID($idencuesta);
         $data["areas"] = $this->encuesta_model->getAreas();
         $data["preguntas"] = $this->encuesta_model->getPreguntaAResolver($idencuesta);
@@ -48,6 +48,25 @@ class Encuesta_controller extends CI_Controller {
     public function guardarEncuesta()
     {
         $this->encuesta_model->guardarEncuesta(
+            $this->input->post("enc"),
+            $this->input->post("datos")
+        );
+    }
+
+    public function nuevaencuesta()
+    {
+        $data["areas"] = $this->encuesta_model->getAreas();
+        $data["tiposPreg"] = $this->encuesta_model->getTiposPreguntas();
+        //echo json_encode($data["tiposPreg"]);
+        $this->load->view("header/header");
+        $this->load->view("header/menu");
+        $this->load->view('/encuesta/crearencuesta',$data);
+        $this->load->view("footer/footer");
+    }
+
+    public function guardarEncuestaNueva()
+    {
+        $this->encuesta_model->guardarEncuestaNueva(
             $this->input->post("enc"),
             $this->input->post("datos")
         );
