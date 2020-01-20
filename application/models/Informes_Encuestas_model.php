@@ -59,7 +59,7 @@ class Informes_Encuestas_model extends CI_Model
      }
 
      //traer cantidad de cada respuesta
-     $json = array();
+     $json = array(); 
      $query = $this->db->query("select ".implode(",",$tipo)." from
       (
       	SELECT
