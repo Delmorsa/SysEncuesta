@@ -50,7 +50,7 @@
                     <ul class="nav child_menu">
 
                       <li><a href="<?php echo base_url("index.php/tusencuestas")?>">Contestar Encuesta</a></li>
-                      <li><a href="form_advanced.html">Crear Encuesta</a></li>
+                      <li><a href="<?php echo base_url("index.php/nuevaencuesta")?>">Crear Encuesta</a></li>
                       <li><a href="<?php echo base_url("index.php/Informes")?>">Informe de Encuestas</a></li>                      
 
                     </ul>
