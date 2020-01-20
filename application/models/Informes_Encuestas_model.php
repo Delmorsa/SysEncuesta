@@ -44,9 +44,10 @@ class Informes_Encuestas_model extends CI_Model
 
   public function resultadosEncuesta($idPregunta,$idArea){
     $tipo = array(); $tipo1 = array();
-		$area = "";
+		$area = ""; $group_by_area = "";
 		if($idArea != "-1"){
 			$area = "and IdArea = '".$idArea."' ";
+			$group_by_area = "dbo.UsuarioPregunta.IdArea,";
 		}
     //Mostrar encabezado de respuesta
     $tipo_query = $this->db->query("select Descripcion from CatValorPregunta
@@ -65,7 +66,7 @@ class Informes_Encuestas_model extends CI_Model
       		dbo.CatValorPregunta.IdTipoPregunta,
       		dbo.CatValorPregunta.Descripcion as Respuetas,
       		dbo.UsuarioPregunta.IdPregunta,
-					dbo.UsuarioPregunta.IdArea,
+					".$group_by_area."
       		Count(dbo.UsuarioPregunta.IdValorPregunta) as Cant_Respuestas
       	FROM
       		dbo.UsuarioPregunta
@@ -75,7 +76,7 @@ class Informes_Encuestas_model extends CI_Model
       		dbo.CatValorPregunta.IdTipoPregunta,
       		dbo.UsuarioPregunta.IdValorPregunta,
       		dbo.UsuarioPregunta.IdPregunta,
-					dbo.UsuarioPregunta.IdArea,
+					".$group_by_area."
       		dbo.CatValorPregunta.Descripcion
       ) as tabla
       pivot(
