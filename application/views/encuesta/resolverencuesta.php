@@ -1,6 +1,6 @@
  <!-- page content -->
-        <div class="right_col"  role="main">
-          
+        <div class="right_col" style="height: 100%" role="main">
+          <div class="x_content">
             
             <div class="row">
               <div class="col-lg-12 mispreguntas">
@@ -63,6 +63,7 @@
               </div>
             </div>
           </div>
+        </div>
         <!-- /page content -->
 <script>
   $(document).ready(function(){
