@@ -11,14 +11,14 @@ class encuesta_model extends CI_Model
 
 	public function getEncuestas()
     {
-        
+
         $query = $this->db->where('estado', 'act')->get('Encuestas');
 
         if ($query->num_rows()> 0) {
             return $query->result_array();
         }
         return 0;
-        
+
     }
 
     public function getEncuestaID($id)
@@ -44,7 +44,7 @@ class encuesta_model extends CI_Model
     public function getPreguntaAResolver($id)
     {
         $query = $this->db->query("SELECT t0.IdPregunta,t0.IdEncuesta,t0.Descripcion,t0.IdTipoPregunta
-                            from EncuestasPreguntas t0                            
+                            from EncuestasPreguntas t0
                             where t0.IdEncuesta = ".$id." and t0.Estado = 'act'");
         //echo json_encode($query->result_array());
         if ($query->num_rows() > 0) {
@@ -55,8 +55,8 @@ class encuesta_model extends CI_Model
     }
     public function getRespuestasAResolver($id)
     {
-        $query = $this->db->query("SELECT IdValorPregunta,Descripcion DescRespuesta,IdTipoPregunta,valor 
-                                FROM CatValorPregunta 
+        $query = $this->db->query("SELECT IdValorPregunta,Descripcion DescRespuesta,IdTipoPregunta,valor
+                                FROM CatValorPregunta
                                 WHERE IdTipoPregunta IN (SELECT IdTipoPregunta FROM EncuestasPreguntas WHERE IdEncuesta = ".$id.")
                                 AND estado = 'act';");
         if ($query->num_rows() > 0) {
@@ -69,8 +69,8 @@ class encuesta_model extends CI_Model
     {
         //echo json_encode($det);
         try {
-            
-        
+
+
         $this->db->trans_begin();
 
         date_default_timezone_set("America/Managua");
@@ -83,10 +83,11 @@ class encuesta_model extends CI_Model
             $UsuarioRespuestas = array(
               "IdUsuario" => $id->result_array()[0]["ID"],//$this->session->userdata("id"),
               "IdPregunta" => $obj[0],
-              "Resultado" => $obj[1], 
+              "Resultado" => $obj[1],
               "Respuesta" => '',
               "IdArea" => $enc[1],
               "IdValorPregunta" => $obj[1],
+							"Comentario"=> $enc[0],
               "Fecha" => date('Y-m-d H:m:s')
             );
 
@@ -158,10 +159,10 @@ class encuesta_model extends CI_Model
                 $bandera = false;
                 $det = json_decode($datos, true);
 
-                foreach ($det as $obj) {                    
+                foreach ($det as $obj) {
                     $idencuesta = $this->db->query("SELECT ISNULL(MAX(IdEncuesta),0) AS IDENCUESTA FROM Encuestas");
 
-                    $rpt = array(                        
+                    $rpt = array(
                         "IdEncuesta" => $idencuesta->result_array()[0]["IDENCUESTA"],
                         "Descripcion" => $obj[0],
                         "Descripcion2" => $obj[1],
@@ -169,7 +170,7 @@ class encuesta_model extends CI_Model
                         "Fecha" => gmdate(date("Y-m-d H:i:s")),
                         "Estado" => 'act'
                     );
-                    
+
                     $guardarRpt = $this->db->insert("EncuestasPreguntas",$rpt);
                     if($guardarRpt){
                         $bandera = true;
@@ -186,7 +187,7 @@ class encuesta_model extends CI_Model
                     $mensaje[0]["mensaje"] = "Error al guardar los datos de la encuesta cod (det)";
                     $mensaje[0]["tipo"] = "error";
                     $this->db->trans_rollback();
-                    echo json_encode($mensaje);                 
+                    echo json_encode($mensaje);
                     return;
                 }
 
