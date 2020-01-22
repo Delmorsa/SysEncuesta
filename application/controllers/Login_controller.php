@@ -50,7 +50,7 @@ class Login_controller extends CI_Controller {
                 $this->session->set_userdata($sessiondata);
 
                 if ($this->session->userdata) {
-                   redirect('Demo'); //por el momento
+                   redirect('tusencuestas'); //por el momento
                 }
             }
         }
