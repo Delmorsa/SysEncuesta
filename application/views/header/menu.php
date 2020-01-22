@@ -51,7 +51,7 @@
 
                       <li><a href="<?php echo base_url("index.php/tusencuestas")?>">Contestar Encuesta</a></li>
                       <li><a href="<?php echo base_url("index.php/nuevaencuesta")?>">Crear Encuesta</a></li>
-                      <li><a href="<?php echo base_url("index.php/Informes")?>">Informe de Encuestas</a></li>
+                      <!--<li><a href="<?php echo base_url("index.php/Informes")?>">Informe de Encuestas</a></li>-->
 
                     </ul>
                   </li>

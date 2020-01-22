@@ -228,12 +228,6 @@ $("#btnDetalles").click(function(){
         // console.log("-----");
       }
 
-      var detalle = new Array();
-      for (var i = 0; i <= contador; i++) {
-        detalle[0] = [];
-        detalle[0][i] = Arr2[i];
-      }
-
       $("#tablaDetalles").html("<table id='tblDetalles' class='table table-condensed table-striped table-bordered'><thead><tr class='primary'>"+
           thead +"</tr></thead><tbody>"+tbody+"</tbody></table>");
     }
