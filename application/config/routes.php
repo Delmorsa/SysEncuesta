@@ -22,4 +22,5 @@ $route["Informes"] = "Informes_Encuestas_controller";
 $route["getPregPorEnc/(:any)"] = "Informes_Encuestas_controller/getPregPorEnc/$1";
 $route["resultadosEncuesta/(:any)/(:any)"] = "Informes_Encuestas_controller/resultadosEncuesta/$1/$2";
 $route["cantUsersEncuesta/(:any)/(:any)"] = "Informes_Encuestas_controller/cantUsersEncuesta/$1/$2";
-
+$route["respPorAreas/(:any)"] = "Informes_Encuestas_controller/respPorAreas/$1";
+$route["detalleEncuestasAreas/(:any)"] = "Informes_Encuestas_controller/detalleEncuestasAreas/$1";

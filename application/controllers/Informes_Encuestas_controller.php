@@ -40,4 +40,12 @@ class Informes_Encuestas_controller extends CI_Controller
   public function getPregPorEnc($idEncuesta){
     $this->Informes_Encuestas_model->getPregPorEnc($idEncuesta);
   }
+
+	public function respPorAreas($idPregunta){
+		$this->Informes_Encuestas_model->respPorAreas($idPregunta);
+	}
+
+	public function detalleEncuestasAreas($idPregunta){
+		$this->Informes_Encuestas_model->detalleEncuestasAreas($idPregunta);
+	}
 }

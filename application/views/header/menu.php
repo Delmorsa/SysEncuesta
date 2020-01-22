@@ -39,19 +39,19 @@
               <div class="menu_section">
                 <h3>Menú</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Demo <span class="fa fa-chevron-down"></span></a>
+                  <!--<li><a><i class="fa fa-home"></i> Demo <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?php echo base_url("index.php/Demo")?>">Dashboard</a></li>
-                     <!--<li><a href="index2.html">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li>-->
+                      <li><a href="<?php //echo base_url("index.php/Demo")?>">Dashboard</a></li>
+                     <li><a href="index2.html">Dashboard2</a></li>
+                      <li><a href="index3.html">Dashboard3</a></li>
                     </ul>
-                  </li>
+                  </li>-->
                   <li><a><i class="fa fa-edit"></i> Encuestas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
 
                       <li><a href="<?php echo base_url("index.php/tusencuestas")?>">Contestar Encuesta</a></li>
                       <li><a href="<?php echo base_url("index.php/nuevaencuesta")?>">Crear Encuesta</a></li>
-                      <li><a href="<?php echo base_url("index.php/Informes")?>">Informe de Encuestas</a></li>                      
+                      <li><a href="<?php echo base_url("index.php/Informes")?>">Informe de Encuestas</a></li>
 
                     </ul>
                   </li>

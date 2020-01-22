@@ -59,7 +59,7 @@ class Informes_Encuestas_model extends CI_Model
      }
 
      //traer cantidad de cada respuesta
-     $json = array(); 
+     $json = array();
      $query = $this->db->query("select ".implode(",",$tipo)." from
       (
       	SELECT
@@ -113,4 +113,93 @@ class Informes_Encuestas_model extends CI_Model
       }
       echo json_encode($json);
   }
+
+
+	//Mostrar cantidad de resp por cada area
+	public function respPorAreas($idPregunta){
+		$json = array(); $i = 0; //$area = "";
+		/*if($idArea != "-1"){
+			$area = "and dbo.CatAreas.IdArea = '".$idArea."' ";
+		}*/
+		$query = $this->db->query(
+			"SELECT
+				dbo.CatAreas.IdArea,
+				dbo.CatAreas.Descripcion,
+				dbo.UsuarioPregunta.IdPregunta,
+				Count(dbo.UsuarioPregunta.IdArea) as Cant_Respuestas
+			FROM
+				dbo.UsuarioPregunta
+			RIGHT JOIN dbo.CatAreas ON dbo.UsuarioPregunta.IdArea= dbo.CatAreas.IdArea
+			WHERE dbo.UsuarioPregunta.IdPregunta = '".$idPregunta." '
+			GROUP BY
+				dbo.CatAreas.IdArea,
+				dbo.CatAreas.Descripcion,
+				dbo.UsuarioPregunta.IdPregunta");
+
+				if($query->num_rows() > 0){
+						foreach ($query->result_array() as $key) {
+							$json[$i]["Area"] = $key["Descripcion"];
+							$json[$i]["Respuestas"] = $key["Cant_Respuestas"];
+							$i++;
+						}
+						echo json_encode($json);
+				}
+	 }
+
+	public function detalleEncuestasAreas($idPregunta){
+		 $tipo = array(); $tipo1 = array();
+		 //Mostrar encabezado de respuesta
+		 $tipo_query = $this->db->query("select Descripcion from CatValorPregunta
+			where IdTipoPregunta in (select IdTipoPregunta from EncuestasPreguntas where IdPregunta = ".$idPregunta.")");
+
+			foreach ($tipo_query->result_array() as $key) {
+				$tipo[] = "[".$key["Descripcion"]."]"; //pivot
+				$tipo1[] = $key["Descripcion"];
+			}
+
+			//traer cantidad de cada respuesta
+			$json = array(); $it = 0;
+			$query = $this->db->query("
+						select
+						dbo.CatAreas.Descripcion as Areas,
+						".implode(",",$tipo)." from
+					(select * from
+						(
+							SELECT
+								dbo.CatValorPregunta.IdTipoPregunta,
+								dbo.CatValorPregunta.Descripcion as Respuetas,
+								dbo.UsuarioPregunta.IdPregunta,
+								dbo.UsuarioPregunta.IdArea,
+								Count(dbo.UsuarioPregunta.IdValorPregunta) as Cant_Respuestas
+							FROM
+								dbo.UsuarioPregunta
+							RIGHT JOIN dbo.CatValorPregunta ON dbo.UsuarioPregunta.IdValorPregunta = dbo.CatValorPregunta.IdValorPregunta
+
+							GROUP BY
+								dbo.CatValorPregunta.IdTipoPregunta,
+								dbo.UsuarioPregunta.IdValorPregunta,
+								dbo.UsuarioPregunta.IdPregunta,
+								dbo.UsuarioPregunta.IdArea,
+								dbo.CatValorPregunta.Descripcion
+							) as tabla
+					pivot(
+								sum(Cant_Respuestas)
+								for Respuetas in (".implode(",",$tipo).")
+							) as p
+				) as tabla1
+				RIGHT JOIN dbo.CatAreas ON tabla1.IdArea= dbo.CatAreas.IdArea
+				where tabla1.IdPregunta = ".$idPregunta."
+				GROUP BY
+				dbo.CatAreas.IdArea,
+						dbo.CatAreas.Descripcion,
+						".implode(",",$tipo)."
+				 ");
+
+			/* foreach ($query->result_array() as $item) {
+				 $json[$it] = $item;
+				 $it++;
+			 }*/
+
+			 echo json_encode($query->result_array());
+	 }
 }
