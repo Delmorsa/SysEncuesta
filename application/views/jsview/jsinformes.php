@@ -221,7 +221,7 @@ $("#btnDetalles").click(function(){
            if(obj[i][propiedad] == null){
              obj[i][propiedad] = 0;
            }
-           tbody += "<th>"+obj[i][propiedad]+"</td>";
+           tbody += "<td>"+obj[i][propiedad]+"</td>";
              //console.log(propiedad+" = ",obj[i][propiedad]);
          }
          tbody += "</tr>";
