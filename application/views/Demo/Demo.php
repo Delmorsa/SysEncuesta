@@ -12,7 +12,7 @@
         <div class="right_col" role="main">
             <div class="row">
               <div class="col-md-12 col-sm-12 ">
-                <div class="x_panel fixed_height_320">
+                <div class="x_panel">
                   <div class="x_title">
                     <h2 class="text-bold">Salida de mercancías</h2>
                     <ul class="nav navbar-right panel_toolbox">
@@ -30,9 +30,15 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                  <div class="">
                     <!--<h4>Listado de salidas</h4>-->
-					<div class="table-responsvie">
+
+                    <div class="col-12">
+                      <iframe width="1000" height="900" src="https://app.powerbi.com/view?r=eyJrIjoiYjVlMTEzMDktM2IxMy00MDRmLThmZjktNGRkZmI4OWI0NzM1IiwidCI6IjA5NjI2MjYzLTI1OTQtNDg2MC04YThkLWI1NTNiN2UzZmNiYiJ9"
+                       frameborder="0" allowFullScreen="true"></iframe>
+                    </div>
+
+					<!--<div class="table-responsvie">
 					  <table id="tblDemo" class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
@@ -54,10 +60,10 @@
 							</tr>
 						</thead>
 						<tbody>
-							
+
 						</tbody>
 					  </table>
-					</div>		
+					</div>-->
                   </div>
                 </div>
               </div>
