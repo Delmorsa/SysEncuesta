@@ -14,7 +14,7 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2 class="text-bold">Demo1</h2>
+                    <h2 class="text-bold">Demo2</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -32,10 +32,10 @@
                   </div>
                   <div class="">
                     <!--<h4>Listado de salidas</h4>-->
-
                     <div class="col-12">
-                      <iframe width="1000" height="900" src="https://app.powerbi.com/view?r=eyJrIjoiYjVlMTEzMDktM2IxMy00MDRmLThmZjktNGRkZmI4OWI0NzM1IiwidCI6IjA5NjI2MjYzLTI1OTQtNDg2MC04YThkLWI1NTNiN2UzZmNiYiJ9"
-                       frameborder="0" allowFullScreen="true"></iframe>
+                      <iframe width="1100" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiMTU1YjU4ZmItZTAxMy00NzI4LThkNzktNzI5NzYwYWYyODJlIiwidCI6IjA5NjI2MjYzLTI1OTQtNDg2MC04YThkLWI1NTNiN2UzZmNiYiJ9"
+
+                      frameborder="0" allowFullScreen="true"></iframe>
                     </div>
 
 					<!--<div class="table-responsvie">

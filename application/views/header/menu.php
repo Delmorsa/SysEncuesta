@@ -42,6 +42,7 @@
                   <li><a><i class="fa fa-home"></i> Demo <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url("index.php/Demo")?>">Demo PW</a></li>
+                      <li><a href="<?php echo base_url("index.php/Demo1")?>">Demo PW1</a></li>
                      <!--<li><a href="index2.html">Dashboard2</a></li>
                       <li><a href="index3.html">Dashboard3</a></li>-->
                     </ul>

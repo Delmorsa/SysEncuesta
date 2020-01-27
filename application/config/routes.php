@@ -10,6 +10,7 @@ $route['Logout'] = 'Login_controller/Salir';
 
 
 $route['Demo'] = 'Demo_controller';
+$route['Demo1'] = 'Demo_controller/Demo1';
 
 $route['tusencuestas'] = 'Encuesta_controller/tusencuestas';
 $route['resolverencuesta/(:any)'] = 'Encuesta_controller/resolverencuesta/$1';

@@ -25,4 +25,13 @@ class Demo_controller extends CI_Controller
 		$this->load->view("footer/footer");
 		$this->load->view("jsview/jsdemo");
 	}
+
+	public function Demo1()
+	{
+		$this->load->view("header/header");
+		$this->load->view("header/menu");
+		$this->load->view("Demo/Demo1");
+		$this->load->view("footer/footer");
+		$this->load->view("jsview/jsdemo");
+	}
 }
