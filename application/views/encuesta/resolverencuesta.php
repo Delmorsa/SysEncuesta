@@ -24,6 +24,33 @@
                   </select>
                 </div>
               </div>
+              <?php if ($encabezado[0]["Anonima"] ==0) {
+                echo '
+                  <div hidden class="form-group">
+                    <label for="txtNombre">Nombre y apellidos</label>
+                    <input type="text"  class="form-control" autocomplete="off" id="txtNombre" placeholder="Nombres y apellidos">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Sexo</label>
+                    <select class="form-control" autocomplete="off" id="txtSexo">
+                      <option value="1">Masculino</option>
+                      <option value="0">Femenino</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="txtEdad">Edad</label>
+                    <input type="number" class="form-control" autocomplete="off" id="txtEdad">
+                  </div>
+                  <div hidden class="form-group">
+                    <label for="txtTelefono">Número de teléfono</label>
+                    <input type="text" class="form-control" autocomplete="off" id="txtTelefono">
+                  </div>
+                  <div hidden class="form-group">
+                    <label for="txtCedula">No Cedula</label>
+                    <input type="text" class="form-control" autocomplete="off" id="txtCedula">
+                  </div>';
+                }
+              ?>
               <div class="row divrespuestas pl-4">
               <?php 
                 foreach ($preguntas as $key ) {
@@ -65,14 +92,22 @@
           </div>
         </div>
         <!-- /page content -->
-<script>
+        <script>
   $(document).ready(function(){
+
     $('#btnGuardar').click(function(){
       console.log("entro al click")
       $('#btnGuardar').prop('disabled',true);
 
       $("#loading").modal("show");
-      var comentario = $('#txtComentario').val()
+      var comentario = $('#txtComentario').val();
+      var Nombre = $('#txtNombre').val();
+      var Edad = $('#txtEdad').val();
+      var Telefono = $('#txtTelefono').val();
+      var Cedula = $('#txtCedula').val();
+      var Sexo = $('#txtSexo').children("option:selected").val();
+
+
       $('#selectAreas').removeClass('bg-red');
       var bandera = true;
       datos = new Array(), i = 0;
@@ -86,10 +121,21 @@
         $('#btnGuardar').prop('disabled',false);
         return false;
       }
-      $( ".divrespuestas>.divmispreguntas" ).each(function( index ) {
-        var idPregunta = $( this ).attr('id');        
-        $('#'+idPregunta).removeClass('bg-danger');
-        $("#divcheck-"+idPregunta+"").find("input[type='radio']:checked").each(function () {
+
+      if (Nombre != '') {
+        if (Nombre.length <5 ) {
+          Swal.fire({
+              type: "error",
+              text: "Nombre demasiado corto",
+              allowOutsideClick: false
+            });
+        }
+      }
+
+    $( ".divrespuestas>.divmispreguntas" ).each(function( index ) {
+      var idPregunta = $( this ).attr('id');        
+      $('#'+idPregunta).removeClass('bg-danger');
+      $("#divcheck-"+idPregunta+"").find("input[type='radio']:checked").each(function () {
             //console.log($(this).attr('id'));
             var str = $(this).attr('id');
             var res = str.split("-");            
@@ -97,65 +143,70 @@
             datos[i][0] = res[2];
             datos[i][1] = res[1];
             i++;
+          });
+      console.log("each de datos")
+    });
+
+    if (datos.length < numPreg) {
+      console.log("< es menor")
+      $("#loading").modal("hide");
+      bandera = false;
+      $( ".divrespuestas>.divmispreguntas" ).each(function( index ) {
+        var contestada = false;
+        var ID = $( this ).attr('id');
+        $("#divcheck-"+ID+"").find("input[type='radio']:checked").each(function () {
+          contestada = true;
         });
-        console.log("each de datos")
+        if (contestada == false) {
+          $('#'+ID).addClass('bg-danger');
+          $(window).scrollTop($('#'+ID).offset().top);
+          $('#btnGuardar').prop('disabled',false);
+          return false;
+        }
       });
 
-      if (datos.length < numPreg) {
-        console.log("< es menor")
-        $("#loading").modal("hide");
-        bandera = false;
-        $( ".divrespuestas>.divmispreguntas" ).each(function( index ) {
-          var contestada = false;
-          var ID = $( this ).attr('id');
-          $("#divcheck-"+ID+"").find("input[type='radio']:checked").each(function () {
-            contestada = true;
-          });
-          if (contestada == false) {
-            $('#'+ID).addClass('bg-danger');
-            $(window).scrollTop($('#'+ID).offset().top);
-            $('#btnGuardar').prop('disabled',false);
-            return false;
-          }
-        });
-
-      }
-      console.log(bandera);
+    }
+    console.log(bandera);
       if (bandera) {//guardo los datos
-        
+
         let form_data = {
-            enc: [$("#txtComentario").val(),$('#selectAreas option:selected').val(),<?php echo $encabezado[0]["IdEncuesta"] ?>],
-            datos: JSON.stringify(datos)
+          enc: [$("#txtComentario").val(),$('#selectAreas option:selected').val(),<?php echo $encabezado[0]["IdEncuesta"] ?>],
+          Nombre: Nombre,
+          Edad: Edad,
+          Telefono: Telefono,
+          Cedula: Cedula,
+          Sexo: Sexo,
+          datos: JSON.stringify(datos)
         };
         $.ajax({
-            url: '<?php echo base_url("index.php/guardarEncuesta") ?>',
-            type: 'POST',
-            data: form_data,
-            success: function(data)
-            {
-              $("#loading").modal("hide");
-              let obj = jQuery.parseJSON(data);
-              $.each(obj, function(index, val) {
-                mensaje = val["mensaje"];
-                tipo = val["tipo"]; 
-              });
-              Swal.fire({
-                type: tipo,
-                text: mensaje,
-                allowOutsideClick: false
-              }).then((result)=>{
-                window.location.href = "<?php echo base_url("index.php/tusencuestas")?>";
-              });
-            },error:function(){
-              Swal.fire({
-                type: "error",
-                text: "Error inesperado, Intentelo de Nuevo",
-                allowOutsideClick: false
-              });
-              $("#loading").modal("hide");
-              $('#btnGuardar').prop('disabled',false);
-            }
-          });
+          url: '<?php echo base_url("index.php/guardarEncuesta") ?>',
+          type: 'POST',
+          data: form_data,
+          success: function(data)
+          {
+            $("#loading").modal("hide");
+            let obj = jQuery.parseJSON(data);
+            $.each(obj, function(index, val) {
+              mensaje = val["mensaje"];
+              tipo = val["tipo"]; 
+            });
+            Swal.fire({
+              type: tipo,
+              text: mensaje,
+              allowOutsideClick: false
+            }).then((result)=>{
+              window.location.href = "<?php echo base_url("index.php/tusencuestas")?>";
+            });
+          },error:function(){
+            Swal.fire({
+              type: "error",
+              text: "Error inesperado, Intentelo de Nuevo",
+              allowOutsideClick: false
+            });
+            $("#loading").modal("hide");
+            $('#btnGuardar').prop('disabled',false);
+          }
+        });
       }
     });
 

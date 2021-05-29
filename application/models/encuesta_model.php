@@ -65,18 +65,38 @@ class encuesta_model extends CI_Model
         return 0;
     }
 
-    public function guardarEncuesta($enc,$det)
+    public function guardarEncuesta($enc,$det,$Nombre,$Edad,$Telefono,$Cedula,$Sexo)
     {
         //echo json_encode($det);
         try {
-
-
-        $this->db->trans_begin();
-
-        date_default_timezone_set("America/Managua");
-        $mensaje = array();
-
-        $bandera=false;
+            $idEncuesta = $enc[2];
+        
+            $this->db->trans_begin();
+    
+            date_default_timezone_set("America/Managua");
+            $mensaje = array();
+    
+            $idencuestado = null;
+    
+    
+            $bandera=false;
+            if ($Nombre != '') {
+                $UsuarioEncuestado = array(
+                    "IdEncuesta" => $idEncuesta,
+                    "Nombre" => $Nombre,
+                    "Edad" => $Edad, 
+                    "Sexo" => $Sexo,
+                    "Telefono" => $Telefono,
+                    "Cedula" => $Cedula
+                );
+                $inserto = $this->db->insert("Encuestado",$UsuarioEncuestado);
+                if($inserto){
+                    $encuestado = $this->db->query("SELECT MAX(IdEncuestado) AS ID FROM Encuestado");
+    
+                    $idencuestado =  $encuestado->result_array()[0]["ID"];
+                    $bandera = true;
+                }
+            }
         $det = json_decode($det, true);
         $id = $this->db->query("SELECT ISNULL(MAX(IdUsuario),0)+1 AS ID FROM UsuarioPregunta");
         foreach ($det as $obj) {

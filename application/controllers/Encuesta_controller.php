@@ -49,7 +49,12 @@ class Encuesta_controller extends CI_Controller {
     {
         $this->encuesta_model->guardarEncuesta(
             $this->input->post("enc"),
-            $this->input->post("datos")
+            $this->input->post("datos"),
+            $this->input->post("Nombre"),
+            $this->input->post("Edad"),
+            $this->input->post("Telefono"),
+            $this->input->post("Cedula"),
+            $this->input->post("Sexo")
         );
     }
 
