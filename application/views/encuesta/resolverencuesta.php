@@ -3,15 +3,15 @@
      <div class="x_content">
 
          <div class="row">
-             <div class="col-lg-12 mispreguntas">
-                 <h1> <?php echo $encabezado[0]["Titulo"]; ?></h1>
+             <div class="col-lg-12 text-center mispreguntas">
+                 <h3> <?php echo $encabezado[0]["Titulo"]; ?></h3>
              </div>
              <div class="col-lg-12 text-center mispreguntas">
                  <h2> <?php echo $encabezado[0]["Descripcion"]; ?></h2>
              </div>
          </div>
 
-         <div class="form-group row mt-3 mb-5 mispreguntas">
+         <div class="form-group row mt-2 mb-2 mispreguntas">
              <label class="control-label col-md-2 col-sm-3 ">Seleccione su area</label>
              <div class="col-md-5 col-sm-9 ">
                  <select id="selectAreas" class="form-control">
@@ -73,7 +73,7 @@
                     ?>
              </div>
          </form>
-         <div class="form-group row mt-5">
+         <div class="form-group row ">
              <label class="comentario">Comentario</label>
              <textarea id="txtComentario" required="required" class="form-control" name="message"
                  data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100"
@@ -81,7 +81,7 @@
                  data-parsley-validation-threshold="10"></textarea>
          </div>
 
-         <div class="row mt-4 mb-5">
+         <div class="row mt-3 mb-3">
              <div class="col-12 text-center">
                  <button type="button" id="btnGuardar" class="btn btn-success">Guardar</button>
              </div>
