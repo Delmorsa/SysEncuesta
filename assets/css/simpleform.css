@@ -1,0 +1,163 @@
+/*.testform {
+    border-radius: 10px;
+    border: 3px solid #ccc;
+    box-shadow: 0px 2px 5px 0px #444;
+    background: #fff;
+    position: relative;
+    padding: 10px;
+    overflow: hidden;
+}*/
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 10px;
+    width: 100%;
+}
+
+input {
+    display: block;
+    outline: none;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+input {
+    background: -moz-linear-gradient(center top, #F2F2F2, #FFFFFF) repeat scroll 0 0 transparent;
+    border: 1px solid #DEDEDE;
+    border-radius: 5px 5px 5px 5px;
+    color: #403D3A;
+    font-size: 16px;
+    padding: 1px 6px;
+    -webkit-input-placeholder
+}
+
+input {
+    width: 200px;
+    height: 26px;
+}
+
+.simple-form-button {
+    background-color: #f4f5f5;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f5f5), to(#dfdddd));
+    background-image: -webkit-linear-gradient(#f4f5f5, #dfdddd);
+    background-image: -moz-linear-gradient(#f4f5f5, #dfdddd);
+    background-image: -o-linear-gradient(#f4f5f5, #dfdddd);
+    background-image: linear-gradient(#f4f5f5, #dfdddd);
+    filter: progid: DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#f4f5f5, endColorstr=#dfdddd);
+    border-color: #E2E2E2 #DDDDDD #CCCCCC;
+    border-left: 1px solid #DDDDDD;
+    border-radius: 5px 5px 5px 5px;
+    border-right: 1px solid #DDDDDD;
+    border-style: solid;
+    border-width: 1px 1px 2px;
+    color: #000000;
+    cursor: pointer;
+    font-size: 9pt;
+    margin: 0;
+    padding: 8px 18px;
+    width: auto;
+    height: auto;
+}
+
+.simple-form-button:hover {
+    background-color: #EBEBEB;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#EBEBEB), to(#c6c3c3));
+    background-image: -webkit-linear-gradient(top, #EBEBEB, #c6c3c3);
+    background-image: -moz-linear-gradient(top, #EBEBEB, #c6c3c3);
+    background-image: -ms-linear-gradient(top, #EBEBEB, #c6c3c3);
+    background-image: -o-linear-gradient(top, #EBEBEB, #c6c3c3);
+    background-image: linear-gradient(to bottom, #EBEBEB, #c6c3c3);
+    filter: progid: DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#EBEBEB, endColorstr=#c6c3c3);
+}
+
+#submit-button {
+    background: -moz-linear-gradient(center top, #FFFFFF, #2a8db4) repeat scroll 0 0 transparent;
+    float: right;
+    display: none;
+}
+
+.form-controls {
+    clear: both;
+}
+
+#previous-fieldset {
+    display: none;
+    float: left;
+}
+
+#next-fieldset {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.progress {
+    display: -ms-flexbox;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: 0.75rem;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+}
+
+.progress-bar {
+    height: 20px;
+    width: 100%;
+    /* Can be anything */
+    position: relative;
+    background: #e2e2e2;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+    padding: 5px;
+    -webkit-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.progress-bar .progress-bg {
+    display: block;
+    height: 100%;
+    -webkit-border-top-right-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    -moz-border-radius-topright: 20px;
+    -moz-border-radius-bottomright: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    -webkit-border-top-left-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -moz-border-radius-topleft: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: rgb(43, 194, 83);
+    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, rgb(43, 194, 83)), color-stop(1, rgb(84, 240, 84)));
+    background-image: -webkit-linear-gradient( center bottom, rgb(43, 194, 83) 37%, rgb(84, 240, 84) 69%);
+    background-image: -moz-linear-gradient( center bottom, rgb(43, 194, 83) 37%, rgb(84, 240, 84) 69%);
+    background-image: -ms-linear-gradient( center bottom, rgb(43, 194, 83) 37%, rgb(84, 240, 84) 69%);
+    background-image: -o-linear-gradient( center bottom, rgb(43, 194, 83) 37%, rgb(84, 240, 84) 69%);
+    -webkit-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    width: 0%;
+}
+
+.progress-text {
+    color: #808080;
+    font-weight: bold;
+}
+
+.progress-bar .progress-text {
+    position: absolute;
+    left: 50%;
+    top: 2px;
+    z-index: 10;
+}
