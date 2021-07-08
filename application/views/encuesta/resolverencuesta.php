@@ -13,7 +13,7 @@
 
          <div class="form-group row mt-2 mb-2 mispreguntas">
              <label class="control-label col-md-2 col-sm-3 ">Seleccione su area</label>
-             <div class="col-md-5 col-sm-9 ">
+             <div class="col-md-3 col-sm-9 ">
                  <select id="selectAreas" class="form-control">
                      <option selected value="-1" disabled>Seleccione su Área</option>
                      <?php
@@ -81,7 +81,7 @@
                  data-parsley-validation-threshold="10"></textarea>
          </div>
 
-         <div class="row mt-3 mb-3">
+         <div class="row mt-2 mb-2">
              <div class="col-12 text-center">
                  <button type="button" id="btnGuardar" class="btn btn-success">Guardar</button>
              </div>
