@@ -4,7 +4,7 @@
 
          <div class="row">
              <div class="col-lg-12 text-center mispreguntas">
-                 <h3> <?php echo $encabezado[0]["Titulo"]; ?></h3>
+                 <h4 style="font-weight: bold;"> <?php echo $encabezado[0]["Titulo"]; ?></h4>
              </div>
              <div class="col-lg-12 text-center mispreguntas">
                  <h2> <?php echo $encabezado[0]["Descripcion"]; ?></h2>
